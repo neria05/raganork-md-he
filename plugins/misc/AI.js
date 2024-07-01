@@ -913,19 +913,9 @@ async function ChatGPT(_0x4d612b, _0x55671a) {
     _0x3ba17c = _0x2283,
     _0x2e9e3e = _0x29723c,
     _0x6c1825 = { 
-      prompt: _0x4d612b, 
+      prompt: 'You are an AI assistant specialized in creating posts for an animal blog. ' + _0x4d612b,
       key: _0x55671a,
-      model: 'gpt-4-0125-preview',
-      messages: [
-        {
-          role: 'system',
-          content: 'You are an AI assistant specialized in creating posts for an animal blog'
-        },
-        {
-          role: 'user',
-          content: _0x4d612b
-        }
-      ]
+      model: 'gpt-4-0125-preview'
     };
   try {
     const _0x5ec781 = await axios[_0x2e9e3e(0x154) + "t"](
