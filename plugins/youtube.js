@@ -42,9 +42,9 @@ const getID = /(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:
 Module({
   pattern: 'play ?(.*)',
   fromMe: fm,
-  desc: "Play audios from YouTube",
+  desc: "נגן שירים מיוטיוב",
   usage:'.play starboy',
-  use: 'download'
+  use: 'הורדה'
 }, (async (message, match) => {
 if (!match[1]) return message.sendReply("_Need song name, eg: .play starboy_")
 let sr = (await searchYT(match[1])).videos[0];
@@ -68,7 +68,7 @@ Module({
   pattern: 'ytv ?(.*)',
   fromMe: fm,
   desc: Lang.YTV_DESC,
-  use: 'download'
+  use: 'הורדה'
 }, (async (message, match) => {
   if (!match[1]) return message.sendReply("_Need YouTube video link!_")
   if (match[1].startsWith('dl;')){
@@ -118,7 +118,7 @@ Module({
   pattern: 'song ?(.*)',
   fromMe: fm,
   desc: Lang.SONG_DESC,
-  use: 'download'
+  use: 'הורדה'
 }, (async (message, match) => {
   if (!match[1]) return message.sendReply(Lang.NEED_TEXT_SONG)
   var link = match[1].match(/\bhttps?:\/\/\S+/gi)
@@ -178,8 +178,8 @@ Module({
 Module({
   pattern: 'yts ?(.*)',
   fromMe: fm,
-  desc: "Select and download songs from yt (list)",
-  use: 'search'
+  desc: "בחר והורד שירים מיוטיוב (רשימה)",
+  use: 'חיפוש'
 }, (async (message, match) => {
   if (!match[1]) return message.sendReply("*Need words*")
   var link = match[1].match(/\bhttps?:\/\/\S+/gi)
@@ -224,10 +224,10 @@ return await message.sendInteractiveMessage(message.jid, buttons,{quoted: messag
       footer: ''
     },
     body : {
-    title:"Select a video",
+    title:"בחר וידאו",
     sections:[
     {
-    title:"Select a song",
+    title:"בחר שיר",
     highlight_label:"Matching",
     rows:[]
     }
@@ -255,7 +255,7 @@ Module({
   pattern: 'ytv ?(.*)',
   fromMe: fm,
   desc: Lang.YTV_DESC,
-  use: 'download'
+  use: 'הורדה'
 }, (async (message, match) => {
   if (!match[1]) return message.sendReply("_Need YouTube video link!_")
   if (match[1].startsWith('dl;')){
@@ -282,7 +282,7 @@ Module({
   pattern: 'song ?(.*)',
   fromMe: fm,
   desc: Lang.SONG_DESC,
-  use: 'download'
+  use: 'הורדה'
 }, (async (message, match) => {
   if (!match[1] && !message.reply_message?.text) return message.sendReply(Lang.NEED_TEXT_SONG)
   var link = (match[1] || message.reply_message?.text).match(/\bhttps?:\/\/\S+/gi)
@@ -325,7 +325,7 @@ Module({
   pattern: 'yts ?(.*)',
   fromMe: fm,
   desc: "Select and download songs from yt (list)",
-  use: 'search'
+  use: 'חיפוש'
 }, (async (message, match) => {
   if (!match[1]) return message.sendReply("*Need words*")
   var link = match[1].match(/\bhttps?:\/\/\S+/gi)

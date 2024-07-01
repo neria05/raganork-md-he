@@ -19,7 +19,7 @@ var handler = Config.HANDLERS !== 'false'?Config.HANDLERS.split("")[0]:""
 Module({
     pattern: 'install ?(.*)',
     fromMe: true,
-    use: 'owner',
+    use: 'בעלים',
     desc: Lang.INSTALL_DESC
 }, (async (message, match) => {
     match = match[1]!==""?match[1]:message.reply_message.text
@@ -60,7 +60,7 @@ Module({
 Module({
     pattern: 'plugin ?(.*)',
     fromMe: true,
-    use: 'owner',
+    use: 'בעלים',
     desc: Lang.PLUGIN_DESC
 }, (async (message, match) => {
     var plugins = await Db.PluginDB.findAll();
@@ -90,7 +90,7 @@ Module({
 Module({
     pattern: 'remove(?: |$)(.*)',
     fromMe: true,
-    use: 'owner',
+    use: 'בעלים',
     desc: Lang.REMOVE_DESC
 }, (async (message, match) => {
     if (match[1] === '') return await message.send(Lang.NEED_PLUGIN);

@@ -51,7 +51,7 @@ acr.identify(file).then(result => {
       fromMe: fromMe,
       desc: Lang.TRIM_DESC,
       usage: Lang.TRIM_USE,
-      use: 'edit'
+      use: 'עורך'
   }, async (message, match) => {
       if (!message.reply_message || (!message.reply_message.video && !message.reply_message.audio)) return await message.sendReply(Lang.TRIM_NEED_REPLY);
       if (message.reply_message.audio) {
@@ -79,7 +79,7 @@ acr.identify(file).then(result => {
     pattern: "black",
     fromMe: fromMe,
     desc: "Audio to black video",
-    use: 'edit'
+    use: 'עורך'
 }, async (message, match) => {
     if (!fs.existsSync("./temp/black")) {
         fs.mkdirSync("./temp/black")
@@ -101,7 +101,7 @@ acr.identify(file).then(result => {
       pattern: "avmix",
       fromMe: fromMe,
       desc: Lang.AVMIX_DESC,
-      use: 'edit'
+      use: 'עורך'
   }, async (message, match) => {
       if (!fs.existsSync("./temp/avmix")) {
           fs.mkdirSync("./temp/avmix")
@@ -131,7 +131,7 @@ acr.identify(file).then(result => {
     pattern: "vmix ?(.*)",
     fromMe: fromMe,
     desc: "Merges/Joins two videos",
-    use: 'edit'
+    use: 'עורך'
 }, async (message, match) => {
     if (!fs.existsSync("./temp/vmix")) {
         fs.mkdirSync("./temp/vmix")
@@ -180,7 +180,7 @@ acr.identify(file).then(result => {
       pattern: "slowmo",
       fromMe: fromMe,
       desc: "Video to smooth slow motion",
-      use: 'edit'
+      use: 'עורך'
   }, async (message, match) => {
       if (!message.reply_message || !message.reply_message.video) return await message.sendReply("*Reply to a video*");
       var savedFile = await message.reply_message.download();
@@ -199,7 +199,7 @@ acr.identify(file).then(result => {
       pattern: "circle",
       fromMe: fromMe,
       desc: "Sticker/photo to circle crop",
-      use: 'edit'
+      use: 'עורך'
   }, async (message, match) => {
       await circle(message);
   });
@@ -226,7 +226,7 @@ acr.identify(file).then(result => {
       pattern: "interp ?(.*)",
       fromMe: fromMe,
       desc: "Increases video's frame rate (FPS)",
-      use: 'edit'
+      use: 'עורך'
   }, async (message, match) => {
       if (!message.reply_message || !message.reply_message.video) return await message.sendReply("*Reply to a video*");
       if (match[1] <= 10) return await message.send('*Low FPS Value ⚠️*\n*Minimun = 10*');
@@ -244,9 +244,9 @@ acr.identify(file).then(result => {
 Module({
       pattern: "find ?(.*)",
       fromMe: fromMe,
-      desc: "Finds music name using AI",
-      usage: ".find reply to a music",
-      use: 'search'
+      desc: "מצא את שם השיר באמצעות AI",
+      usage: ".find תגובה למוזיקה",
+      use: 'חיפוש'
   }, async (message, match) => {
       if (!message.reply_message?.audio) return await message.sendReply("_Reply to a music_");
       if (message.reply_message.duration > 60) return await message.send('_Audio too large! Use .trim command and cut the audio to < 60 secs_');

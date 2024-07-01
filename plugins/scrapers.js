@@ -50,7 +50,7 @@ Module({
     fromMe: w,
     usage: Lang.TRANSLATE_USAGE,
     desc: Lang.TRANSLATE_DESC,
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     if (!message.reply_message?.message) return await message.sendReply(Lang.NEED_REPLY)
     match = match[1]
@@ -80,7 +80,7 @@ Module({
     pattern: 'tts ?(.*)',
     fromMe: w,
     desc: Lang.TTS_DESC,
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     var query = match[1] || message.reply_message.text
     if (!query) return await message.sendReply(Lang.TTS_NEED_REPLY);
@@ -120,7 +120,7 @@ Module({
     pattern: 'img ?(.*)',
     fromMe: w,
     desc: Lang.IMG_DESC,
-    use: 'search'
+    use: 'חיפוש'
 }, (async (message, match) => {
     if (!match[1]) return await message.sendReply(Lang.NEED_WORD);
     var count = parseInt(match[1].split(",")[1]) || 5
@@ -140,9 +140,9 @@ Module({
 Module({
     pattern: 'gpt ?(.*)',
     fromMe: w,
-    desc: "OpenAI's ChatGPT's official languauge model, used for text generation, researches, and natural conversations",
+    desc: "מודל השפה הרשמי של ChatGPT של OpenAI, המשמש ליצירת טקסט, מחקרים ושיחות טבעיות",
     use: 'AI',
-    usage: '.gpt Write a short note about Lionel Messi'
+    usage: '.gpt כתוב פוסט קצר על מצב החסה בשטחים'
 }, (async (message, match) => {
     if (!match[1]) return await message.sendReply("Need any query!");
     if (!process.env.OPENAI_KEY) return await message.sendReply("_No OpenAI API key found. Get an API key:_\n\n_1. Create an account: https://platform.openai.com/signup/_\n\n_2. Then, open this url: https://platform.openai.com/account/api-keys and copy api key_\n\n_3. Add the key into OPENAI_KEY var using .setvar_\n\n_(Eg: .setvar OPENAI_KEY:yourkeyhere )_" )
@@ -180,7 +180,7 @@ Module({
     pattern: 'zipcode ?(.*)',
     fromMe: w,
     desc: "Searchs for pincode/postoffice in India",
-    use: 'search',
+    use: 'חיפוש',
     usage: '.zipcode Kozhikode or .zipcode 673015'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("_Need a post office/pincode_\n_Ex: .zipcode Kozhikode_\n_.zipcode 673015_");
@@ -189,8 +189,8 @@ Module({
 Module({
     pattern: 'upload ?(.*)',
     fromMe: w,
-    desc: "Downloads & uploads media from raw URL",
-    use: 'download'
+    desc: "הורדה & העלאה של מדיה מכתובת URL",
+    use: 'הורדה'
 }, (async (message, match) => {
     if (!match[1] && !message.reply_message.text) return await message.sendReply("_Need raw media url!_");
     match = match[1] ? match[1] : message.reply_message.text
@@ -204,7 +204,7 @@ Module({
     return await message.sendReply(Buffer.from(data),match.includes('mp4')?'video':'image')
     } catch {
     let tiny = await axios("https://tinyurl.com/api-create.php?url="+match)
-    return await message.sendReply("Couldn't download that, click here to download: "+tiny.data);
+    return await message.sendReply("לא הצלחתי להוריד את זה, לחץ כאן כדי להוריד: "+tiny.data);
     }}
     }
     let {mime} = await fromBuffer(file)
@@ -236,7 +236,7 @@ Module({
     pattern: 'doc ?(.*)',
     fromMe: w,
     desc: "Message to document",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     if (!message.reply_message) return await message.sendReply("_Need a file!_");
     match = match[1] ? match[1] : "file-"+Date.now()
@@ -253,7 +253,7 @@ Module({
     pattern: 'hackernews ?(.*)',
     fromMe: w,
     desc: "Hacker news articles",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     let json = await getJson("https://raganork-network.vercel.app/api/news/hackernews")
     var msg = "*Hacker news*\n\n";
@@ -266,7 +266,7 @@ Module({
     pattern: 'waupdate ?(.*)',
     fromMe: w,
     desc: "Upcoming whatsapp update news",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     if (match[1].startsWith("https")){
         try { var result = await getJson(`https://raganork-network.vercel.app/api/wabetainfo?url=${match[1]}`); } catch {return await message.sendReply("_Not found!_")}
@@ -291,7 +291,7 @@ Module({
     pattern: 'video ?(.*)',
     fromMe: w,
     desc: Lang.VIDEO_DESC,
-    use: 'download'
+    use: 'הורדה'
 }, async (message, match) => {
     var s1 = !match[1].includes('youtu') ? message.reply_message.message : match[1]
     if (s1 && s1.includes("instagram")) return;
@@ -313,7 +313,7 @@ Module({
     pattern: 'news ?(.*)',
     fromMe: w,
     desc: "Latest news",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("_Need category!_\n_.news *kerala|india|world*_")
     if (match[1].toLowerCase() === "kerala"){
@@ -364,7 +364,7 @@ Module({
     pattern: 'mediafire ?(.*)',
     fromMe: w,
     desc: "Mediafire Download Link",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("*Need url*");
     var {link,title,size} = (await axios("https://raganork-network.vercel.app/api/mediafire?url="+match[1])).data
@@ -377,7 +377,7 @@ Module({
     pattern: 'ss ?(.*)',
     fromMe: w,
     desc: "Web Screenshot",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     var url = match[1] || message.reply_message.text
     if (!url || !/\bhttps?:\/\/\S+/gi.test(url)) return await message.sendReply("*_Need url!_*");
@@ -387,8 +387,8 @@ Module({
 Module({
     pattern: 'subtitle ?(.*)',
     fromMe: w,
-    desc: "Subtitle search/download utility",
-    use: 'download'
+    desc: "כלי חיפוש/הורדה של כתוביות",
+    use: 'הורדה'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("_Need a movie/series name_");
     var news = [];
@@ -488,7 +488,7 @@ if (message.button && message.button.startsWith("24n") && message.button.include
         pattern: 'detectlang$',
         fromMe: w,
         desc: Lang.DLANG_DESC,
-        use: 'utility'
+        use: 'פרודוקטיביות'
     }, async (message, match) => {
     
     if (!message.reply_message) return await message.send(Lang.NEED_REPLY)
@@ -517,8 +517,8 @@ if (message.button && message.button.startsWith("24n") && message.button.include
 Module({
     pattern: 'movie (.*)',
     fromMe: w,
-    desc: "Movie search",
-    use: 'search'
+    desc: "חיפוש סרט",
+    use: 'חיפוש'
 }, async (message, match) => {
     if (match[1] === '') return await message.sendReply('_Need a movie name!_');
 	var {data} = await axios(`http://www.omdbapi.com/?apikey=742b2d09&t=${match[1]}&plot=full`);

@@ -8,7 +8,7 @@ Module({
     pattern: 'lyrics ?(.*)',
     fromMe: fromMe,
     desc: 'Lyrics search & find',
-    use: 'download'
+    use: 'הורדה'
 }, (async (message, match) => {
     if (!match[1]) return await message.sendReply("_Need query!_");
     let result = await getJson(`https://raganork.tk/api/lyrics?query=${encodeURIComponent(match[1])}`)

@@ -7,7 +7,7 @@ Module({
   pattern: 'age ?(.*)',
   fromMe: auto,
   desc: 'Age calculator .age dob',
-  use: 'utility',
+  use: 'פרודוקטיביות',
 }, async (m,t) => {
 if (!t[1]) return await m.sendReply("_Give me your Date of Birth_");
 if (!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(t[1])) return await m.sendReply("_Date must be in dd/mm/yy format_");
@@ -22,7 +22,7 @@ Module({
   pattern: 'cntd ?(.*)',
   fromMe: auto,
   desc: 'Counts Date',
-  use: 'utility',
+  use: 'פרודוקטיביות',
 }, async (m,t) => {
 if (!t[1]) return await m.sendReply("_Give me a future date!_");
 if (!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(t[1])) return await m.sendReply("_Date must be in dd/mm/yy format_");

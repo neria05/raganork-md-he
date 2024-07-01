@@ -37,7 +37,7 @@ Module({
     pattern: 'retry ?(.*)',
     fromMe: false,
     desc: 'Retries replied command to run the command again',
-    use: 'misc'
+    use: 'שונות'
 }, (async (m, t) => {
     if (!m.reply_message) return await m.sendReply('_Reply to a command message_')
     await m.client.ev.emit('messages.upsert',{messages: [m.quoted],type: 'notify'})
@@ -46,7 +46,7 @@ Module({
     pattern: 'vv ?(.*)',
     fromMe: true,
     desc: "Anti view once",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (m, t) => {
     if (!m.reply_message || (!m.quoted?.message.hasOwnProperty('viewOnceMessage') &&  !m.quoted?.message.hasOwnProperty('viewOnceMessageV2'))) return await m.sendReply("_Not a view once msg!_") 
     m.quoted.message = m.quoted.message.viewOnceMessage?.message || m.quoted.message.viewOnceMessageV2?.message;

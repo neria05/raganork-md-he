@@ -20,8 +20,8 @@ const {
 Module({
     pattern: 'wapoll ?(.*)',
     fromMe: true,
-    desc: "Creates poll (WhatsApp feature)",
-    use: 'group',
+    desc: "יוצר סקר (WhatsApp feature)",
+    use: 'קבוצות',
     usage: '.wapoll Poll title,option,option,option'
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -36,8 +36,8 @@ Module({
 Module({
     pattern: 'clear ?(.*)',
     fromMe: true,
-    desc: "Clear chat",
-    use: 'misc'
+    desc: "ניקוי צ'אט",
+    use: 'שונות'
 }, (async (message, match) => {
     await message.client.chatModify({
         delete: true,
@@ -49,7 +49,7 @@ Module({
     pattern: 'kick ?(.*)',
     fromMe: false,
     desc: Lang.KICK_DESC,
-    use: 'group'
+    use: 'קבוצות'
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
@@ -98,8 +98,8 @@ Module({
     pattern: 'add ?(.*)',
     fromMe: true,
     desc: Lang.ADD_DESC,
-    warn:"You number might get banned, use with caution",
-    use: 'group'
+    warn:"המספר שלך עלול להיחסם, השתמש בזהירות",
+    use: 'קבוצות'
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
     var init = match[1] || message.reply_message.jid.split("@")[0]
@@ -113,7 +113,7 @@ Module({
 Module({
     pattern: 'promote ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: Lang.PROMOTE_DESC
 }, (async (message, match) => {
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
@@ -132,7 +132,7 @@ Module({
 Module({
     pattern: 'requests ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     usage: '.requests approve all or reject all',
     desc: "Get list of pending join requests"
 }, (async (message, match) => {
@@ -250,7 +250,7 @@ return await m.sendReply(final_msg)
 Module({
     pattern: 'demote ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: Lang.DEMOTE_DESC
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -268,7 +268,7 @@ Module({
 }}))
 Module({
     pattern: 'mute ?(.*)',
-    use: 'group',
+    use: 'קבוצות',
     fromMe: false,
     desc: Lang.MUTE_DESC,
     usage:'mute 1h\nmute 5m'
@@ -294,7 +294,7 @@ Module({
 }}))
 Module({
     pattern: 'unmute',
-    use: 'group',
+    use: 'קבוצות',
     fromMe: false,
     desc: Lang.UNMUTE_DESC
 }, (async (message, match) => {
@@ -308,7 +308,7 @@ Module({
 }}))
 Module({
     pattern: 'jid',
-    use: 'group',
+    use: 'קבוצות',
     fromMe: false,
     desc: Lang.JID_DESC
 }, (async (message, match) => {
@@ -320,7 +320,7 @@ Module({
 Module({
     pattern: 'invite',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: Lang.INVITE_DESC
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -336,7 +336,7 @@ Module({
 Module({
     pattern: 'revoke',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: Lang.REVOKE_DESC
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -350,7 +350,7 @@ Module({
 Module({
     pattern: 'glock ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: "Change group settings to allow only admins to edit group's info!"
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -362,7 +362,7 @@ Module({
 Module({
     pattern: 'gunlock ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: "Change group settings to allow everyone to edit group's info!"
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -374,7 +374,7 @@ Module({
 Module({
     pattern: 'gname ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: "Change group subject"
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -389,7 +389,7 @@ Module({
 Module({
     pattern: 'gdesc ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: "Change group description"
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
@@ -404,7 +404,7 @@ Module({
 Module({
     pattern: 'common ?(.*)',
     fromMe: false,
-    use: 'group',
+    use: 'קבוצות',
     desc: "Get common participants in two groups, and kick using .common kick jid"
 }, (async (message, match) => {
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
@@ -449,7 +449,7 @@ await message.client.sendMessage(message.jid, {
 Module({
     pattern: 'diff ?(.*)',
     fromMe: false,
-    use: 'utility',
+    use: 'פרודוקטיביות',
     desc: "Get difference of participants in two groups"
 }, (async (message, match) => {
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
@@ -469,7 +469,7 @@ Module({
     pattern: 'tagall',
     fromMe: false,
     desc: Lang.TAGALL_DESC,
-    use: 'group'
+    use: 'קבוצות'
 }, (async (message, match) => {
     if (!message.isGroup) return await message.sendReply(Lang.GROUP_COMMAND)
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
@@ -490,7 +490,7 @@ Module({
 Module({
     pattern: 'block ?(.*)',
     fromMe: true,
-    use: 'owner'
+    use: 'בעלים'
 }, (async (message, match) => {
     var isGroup = message.jid.endsWith('@g.us')
     var user = message.jid
@@ -500,7 +500,7 @@ Module({
 Module({
     pattern: 'join ?(.*)',
     fromMe: true,
-    use: 'owner'
+    use: 'בעלים'
 }, (async (message, match) => {
     var rgx = /^(https?:\/\/)?chat\.whatsapp\.com\/(?:invite\/)?([a-zA-Z0-9_-]{22})$/
     if (!match[1] || !rgx.test(match[1])) return await message.sendReply("*Need group link*");
@@ -509,7 +509,7 @@ Module({
 Module({
     pattern: 'unblock ?(.*)',
     fromMe: true,
-    use: 'owner'
+    use: 'בעלים'
 }, (async (message) => {
     var isGroup = message.jid.endsWith('@g.us')
     if (!isGroup) return;
@@ -519,7 +519,7 @@ Module({
 Module({
     pattern: 'pp ?(.*)',
     fromMe: true,
-    use: 'owner',
+    use: 'בעלים',
     desc: "Change/Get profile picture (full screen supported) with replied message"
 }, (async (message, match) => {
     if (message.reply_message && message.reply_message.image) {
@@ -535,7 +535,7 @@ if (message.reply_message && !message.reply_message.image) {
 Module({
     pattern: 'gpp ?(.*)',
     fromMe: false,
-    use: 'owner',
+    use: 'בעלים',
     desc: "Change/Get group icon (full screen supported) with replied message"
 }, (async (message, match) => {
     let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;

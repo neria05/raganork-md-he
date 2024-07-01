@@ -52,7 +52,7 @@ Module({
     desc:"Sticks commands on stickers. And if that sticker is sent, it will work as a command!",
     usage:".stickcmd kick",
     warn: "Only works on stickers",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
 if (!match[1] || !message.reply_message || !message.reply_message.sticker) return await message.sendReply("_Reply to a sticker_\n_Ex: *.stickcmd kick*_")
 try { await stickCmd(await extractData(message),match[1]); } catch {return await message.sendReply("_Failed!_")}
@@ -63,7 +63,7 @@ Module({
     fromMe: true,
     desc:"Deletes sticked commands on stickers",
     usage:".unstick kick",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
 if (message.reply_message && message.reply_message.sticker){
     let deleted = await unstickCmd(await extractData(message),2);
@@ -86,7 +86,7 @@ Module({
     pattern: "getstick ?(.*)",
     fromMe: true,
     desc:"Shows sticked commands on stickers",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message, match) => {
     var all = await getSticks();
     var commands = all.map(element=>element.dataValues.file)
@@ -97,7 +97,7 @@ Module({
     pattern: "automute ?(.*)",
     fromMe: false,
     warn: "This works according to IST (Indian standard time)",
-    use: 'group'
+    use: 'קבוצות'
 }, async (message, match) => {
 let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
 if (message.fromOwner || adminAccesValidated) {
@@ -120,7 +120,7 @@ Module({
     pattern: "autounmute ?(.*)",
     fromMe: false,
     warn: "This works according to IST (Indian standard time)",
-    use: 'group'
+    use: 'קבוצות'
 }, async (message, match) => {
 let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
 if (message.fromOwner || adminAccesValidated) {
@@ -146,7 +146,7 @@ var {
 Module({
     pattern: "getmute ?(.*)",
     fromMe: false,
-    use: 'group'
+    use: 'קבוצות'
 }, async (message, match) => {
 let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
 if (message.fromOwner || adminAccesValidated) {
@@ -168,7 +168,7 @@ message.sendReply("*Scheduled Mutes/Unmutes*\n\n"+msg)
 Module({
     pattern: "antifake ?(.*)",
     fromMe: false,
-    use: 'group'
+    use: 'קבוצות'
 }, async (message, match) => {
 let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
 if (message.fromOwner || adminAccesValidated) {

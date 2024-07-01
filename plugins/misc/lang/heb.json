@@ -29,7 +29,7 @@
             "NOT_ADMIN": "אני לא מנהל בקבוצה הזאת 😅",
             "ISADMIN": "אי אפשר להעיף מנהל! 🛑",
             "KICKED": "המשתמש הועף מהקבוצה! 🚫",
-            "NEED_USER": "תייג את המשתמש שאתה רוצה להעיף",
+            "NEED_USER": "_דרוש משתמש!_",
             "ADD_DESC": "מוסיף חברים חדשים לקבוצה 🤝",
             "ADDED": "המשתמש התווסף לקבוצה בהצלחה! 🎊",
             "ALREADY_PROMOTED": "המשתמש הזה כבר מנהל 👑",

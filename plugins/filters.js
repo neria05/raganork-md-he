@@ -15,7 +15,7 @@ Module({
     pattern: 'filter ?(.*)',
     fromMe: true,
     desc: "Set filter (autoreply)",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message,match)=>{
  return await message.sendReply(
 `_There are three types of filter:_
@@ -35,7 +35,7 @@ Module({
     pattern: 'stop ?(.*)',
     fromMe: true,
     desc: "Set filter (autoreply)",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, async (message,match)=>{
  return await message.sendReply(
 `_To stop (delete) a filter, use:_
@@ -53,7 +53,7 @@ _(Example: .cstop "hello")_`
     pattern: 'cfilter ?(.*)',
     fromMe: true,
     desc: "Adds custom filter (autoreply) in specific chat",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (message.reply_message.text) {
@@ -90,7 +90,7 @@ Module({
     pattern: 'gfilter ?(.*)',
     fromMe: true,
     desc: "Adds global filter (autoreply) in the bot in all groups",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (message.reply_message.text) {
@@ -125,7 +125,7 @@ Module({
     pattern: 'dfilter ?(.*)',
     fromMe: true,
     desc: "Adds custom filter in all DM|PM|inbox",
-    use: 'utility'
+    use: 'פרודוקטיביות'
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (message.reply_message.text) {
@@ -153,7 +153,7 @@ Module({
 Module({
     pattern: 'cstop ?(.*)',
     fromMe: true,
-    use: 'utility',
+    use: 'פרודוקטיביות',
     desc: "Deletes a filter from specific chat",
     dontAddCommandList: true
 }, (async (message, match) => {
@@ -179,7 +179,7 @@ Module({
 Module({
     pattern: 'dstop ?(.*)',
     fromMe: true,
-    use: 'utility',
+    use: 'פרודוקטיביות',
     desc: "Deletes a DM filter",
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
@@ -204,7 +204,7 @@ Module({
 Module({
     pattern: 'gstop ?(.*)',
     fromMe: true,
-    use: 'utility',
+    use: 'פרודוקטיביות',
     desc: "Deletes a global group filter",
 }, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);

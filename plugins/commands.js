@@ -34,24 +34,24 @@ Module({
     var e = "";
     if (a[1]) {
         let foundCommand = findCommand(a[1].trim())
-        if (!foundCommand) return await n.sendReply("_No such command!_")
-        let msgToBeSent_ = `_*פקודה:* ${foundCommand.command}_\n_*Desc:* ${foundCommand.desc}_\n_*Owner command:* ${foundCommand.fromMe}_`
+        if (!foundCommand) return await n.sendReply("_אין פקודה כזו!_")
+        let msgToBeSent_ = `_*פקודה:* ${foundCommand.command}_\n_*תיאור:* ${foundCommand.desc}_\n_*פקודת מנהל:* ${foundCommand.fromMe}_`
         if (foundCommand.use) msgToBeSent_+=`\n_*סוג:* ${foundCommand.use}_`
         if (foundCommand.usage) msgToBeSent_+=`\n_*שימוש:* ${foundCommand.usage}_`
         if (foundCommand.warn) msgToBeSent_+=`\n_*אזהרה:* ${foundCommand.warn}_`
         return await n.sendReply(msgToBeSent_)        
-    } else return await n.sendReply("_Need a command, example: .מידע insta_")
+    } else return await n.sendReply("_צריך להזין פקודה, לדוגמה: .מידע insta_")
 });    
         Module({
-    pattern: "list ?(.*)",
+    pattern: "רשימה ?(.*)",
     fromMe: w,
     dontAddCommandList: true
 }, async (n, a) => {
     var e = "";
     if (a[1]) {
         let foundCommand = findCommand(a[1].trim())
-        if (!foundCommand) return await n.sendReply("_No such command!_")
-        let msgToBeSent_ = `_*פקודה:* ${foundCommand.command}_\n_*תיאור:* ${foundCommand.desc}_\n_*Owner command:* ${foundCommand.fromMe}_`
+        if (!foundCommand) return await n.sendReply("_אין פקודה כזו!_")
+        let msgToBeSent_ = `_*פקודה:* ${foundCommand.command}_\n_*תיאור:* ${foundCommand.desc}_\n_*פקודת מנהל:* ${foundCommand.fromMe}_`
         if (foundCommand.use) msgToBeSent_+=`\n_*סוג:* ${foundCommand.use}_`
         if (foundCommand.usage) msgToBeSent_+=`\n_*שימוש:* ${foundCommand.usage}_`
         if (foundCommand.warn) msgToBeSent_+=`\n_*אזהרה:* ${foundCommand.warn}_`

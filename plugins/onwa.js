@@ -14,5 +14,5 @@ Module({
     if (!match[1]) return await message.sendReply("_Need number!_");
     let x = await message.send("_Processing.._");
     await processOnwa(message,match[1])
-    return await message.edit('_Task complete!_',message.jid,x.key)
+    return await message.edit('_משימה הושלמה!_',message.jid,x.key)
 }));

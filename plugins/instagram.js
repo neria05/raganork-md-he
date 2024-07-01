@@ -31,11 +31,11 @@ const {
 } = require('./misc/misc');
 const Config = require('../config');
 const s = require('../config');
-var need = "*_Need instagram link!_*";
+var need = "*_צריך קישור אינסטגרם!_*";
 var downloading = "_*Downloading*_";
-var need_acc = "*_Need an instagram username!_*";
-var fail = "*_Download failed! Check your link and try again_*";
-var need_acc_s = "_Need an instagram username or link!_";
+var need_acc = "*_צריך שם משתמש באינססטגרם!_*";
+var fail = "*_הורדה נכשלה! בדוק את הקישור שלך ונסה שוב_*";
+var need_acc_s = "_צריך שם משתמש או קישור לאינסטגרם!_";
 let sourav = setting.MODE == 'public' ? false : true
 let hnd = setting.HANDLERS !== 'false'? setting.HANDLERS.split("")[0]:"";
 function BypassCertificateCheck(){
@@ -46,9 +46,9 @@ if (process.env.NODE_TLS_REJECT_UNAUTHORIZED != 0) {
 Module({
     pattern: 'insta ?(.*)',
     fromMe: sourav,
-    desc: 'Instagram post/reel/tv/highlights downloader',
-    usage: 'insta link or reply to a link',
-    use: 'download'
+    desc: 'מוריד post/reel/tv/highlights מאינסטגרם',
+    usage: 'קישור אינסטגרם או תגובה על קישור',
+    use: 'הורדה'
 }, (async (msg, query) => {
     BypassCertificateCheck();
      var q = query[1] || msg.reply_message?.text
@@ -64,7 +64,7 @@ Module({
     var url = getid.exec(q)
     if (url != null) {
         try { var res = await downloadGram(url[0]) } catch { return await msg.sendReply("_Something went wrong, Please try again!_") }
-        if (res == false) return await msg.sendReply("*Download failed*");
+        if (res == false) return await msg.sendReply("*הורדה נכשלה*");
         var quoted = msg.reply_message ? msg.quoted : msg.data
         for (var i in res) {
             let media = await skbuffer(res[i])
@@ -76,27 +76,27 @@ Module({
 Module({
     pattern: 'fb ?(.*)',
     fromMe: sourav,
-    desc: 'Facebook video downloader',
-    usage: 'fb link or reply to a link',
-    use: 'download'
+    desc: 'מוריד סרטונים מיוטיוב',
+    usage: 'קישור פייסבוק או תגובה על קישור',
+    use: 'הורדה'
 }, (async (msg, query) => {
     BypassCertificateCheck();
      var q = !msg.reply_message.message ? query[1] : msg.reply_message.message
      let _q = !msg.reply_message.message ? query[1] : msg.reply_message.message
      if (/\bhttps?:\/\/\S+/gi.test(q)) q = q.match(/\bhttps?:\/\/\S+/gi)[0]
-     if (!q) return await msg.sendReply("*Need Facebook link*")
+     if (!q) return await msg.sendReply("*צריך קישור פייסבוק*")
      var res = await fb(q);
      let sent_msg = await msg.sendReply('_*Hold on, downloading will take some time..*_')
     const end = new Date().getTime()
     await msg.sendReply({url: res.url},"video")
-    return await msg.edit('*_Download complete!_*',msg.jid,sent_msg.key)
+    return await msg.edit('*_הורדה הושלמה!_*',msg.jid,sent_msg.key)
         }));
 Module({
     pattern: 'ig ?(.*)',
     fromMe: sourav,
-    desc: 'Gets account info from instagram',
+    desc: 'מקבל פרטי חשבון מאינסטגרם',
     usage: 'ig username',
-    use: 'search'
+    use: 'חיפוש'
 }, (async (message, match) => {
     BypassCertificateCheck();
     if (!match[1]) return await message.sendReply("_Need instagram username!_")
@@ -118,7 +118,7 @@ Module({
     fromMe: sourav,
     desc: 'Instagram stories downloader',
     usage: '.story username or link',
-    use: 'download'
+    use: 'הורדה'
 }, (async (msg, query) => {
     BypassCertificateCheck();
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
@@ -160,7 +160,7 @@ Module({
     fromMe: sourav,
     desc: 'Pinterest downloader',
     usage: '.pinterest reply or link',
-    use: 'download'
+    use: 'הורדה'
 }, (async (msg, query) => {
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (user === 'g') return;
@@ -186,7 +186,7 @@ Module({
 Module({
     pattern: 'pin ?(.*)',
     fromMe: sourav,
-    use: 'download'
+    use: 'הורדה'
 }, (async (msg, query) => {
     var user = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!user || user === 'g' || user.startsWith('terest')) return;
@@ -199,7 +199,7 @@ Module({
     fromMe: sourav,
     desc: 'tiktok downloader',
     usage: '.tiktok reply or link',
-    use: 'download'
+    use: 'הורדה'
 }, (async (msg, query) => {
     var link = query[1] !== '' ? query[1] : msg.reply_message.text;
     if (!link) return await msg.sendReply("_Need a tiktok url_");

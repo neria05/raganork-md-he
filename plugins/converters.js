@@ -28,7 +28,7 @@ const Lang = getString('converters');
 let w = MODE == 'public' ? false : true
 Module({
     pattern: 'sticker ?(.*)',
-    use: 'edit',
+    use: 'עורך',
     fromMe: w,
     desc: Lang.STICKER_DESC
 }, (async (message, match) => {
@@ -50,12 +50,12 @@ Module({
 Module({
     pattern: 'mp3 ?(.*)',
     fromMe: w,
-    use: 'edit',
+    use: 'עורך',
     desc: Lang.MP3_DESC
 }, (async (message, match) => {
     if (!message.reply_message || (!message.reply_message.video && !message.reply_message.audio)) return await message.sendReply(Lang.MP3_NEED_REPLY)
     var {seconds} = message.quoted.message[Object.keys(message.quoted.message)[0]];
-    if (seconds>120) await message.sendReply(`_Alert: Duration more than 2 mins. This process may fail or take much more time!_`)
+    if (seconds>120) await message.sendReply(`_אזהרה: משך יותר מ-2 דקות. תהליך זה עלול להיכשל או לקחת הרבה יותר זמן!_`)
     var savedFile = await message.reply_message.download();
     ffmpeg(savedFile)
         .save('./temp/tomp3.mp3')
@@ -72,12 +72,12 @@ Module({
 Module({
     pattern: 'slow ?(.*)',
     fromMe: w,
-    use: 'edit',
-    desc: "Slows down music & decreases pitch. For making slowed+reverb audios"
+    use: 'עורך',
+    desc: "מאט את המוזיקה ומפחית את גובה הצליל. להכנת שמע איטי+Reverb"
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.MP3_NEED_REPLY)
     var {seconds} = message.quoted.message[Object.keys(message.quoted.message)[0]];
-    if (seconds>120) await message.sendReply(`_Alert: Duration more than 2 mins. This process may fail or take much more time!_`)
+    if (seconds>120) await message.sendReply(`_אזהרה: משך יותר מ-2 דקות. תהליך זה עלול להיכשל או לקחת הרבה יותר זמן!_`)
     var savedFile = await message.reply_message.download();
     ffmpeg(savedFile)
         .audioFilter("atempo=0.5")
@@ -96,12 +96,12 @@ Module({
 Module({
     pattern: 'speed ?(.*)',
     fromMe: w,
-    use: 'edit',
+    use: 'עורך',
     desc: "Speeds up music & increases pitch. For making sped-up+reverb audios"
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.MP3_NEED_REPLY)
     var {seconds} = message.quoted.message[Object.keys(message.quoted.message)[0]];
-    if (seconds>120) await message.sendReply(`_Alert: Duration more than 2 mins. This process may fail or take much more time!_`)
+    if (seconds>120) await message.sendReply(`_אזהרה: משך יותר מ-2 דקות. תהליך זה עלול להיכשל או לקחת הרבה יותר זמן!_`)
     var savedFile = await message.reply_message.download();
     ffmpeg(savedFile)
         .audioFilter("atempo=0.5")
@@ -120,7 +120,7 @@ Module({
 Module({
     pattern: 'bass ?(.*)',
     fromMe: w,
-    use: 'edit',
+    use: 'עורך',
     desc: Lang.BASS_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.sendReply(Lang.BASS_NEED_REPLY)
@@ -138,7 +138,7 @@ Module({
 Module({
     pattern: 'photo ?(.*)',
     fromMe: w,
-    use: 'edit',
+    use: 'עורך',
     desc: Lang.PHOTO_DESC
 }, (async (message, match) => {
     if (message.reply_message === false) return await message.send(Lang.PHOTO_NEED_REPLY)
@@ -154,8 +154,8 @@ Module({
 Module({
     pattern: 'attp ?(.*)',
     fromMe: w,
-    use: 'utility',
-    desc: "Text to animated sticker"
+    use: 'פרודוקטיביות',
+    desc: "הופך טקסט לסטיקר אנימציה"
 }, (async (message, match) => {
     if (match[1] == '') return await message.send("*Need text*")
     var result = await skbuffer("https://raganork-api.onrender.com/api/attp?text="+encodeURI(match[1] +"&apikey=with_love_souravkl11")) 

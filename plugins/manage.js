@@ -169,7 +169,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'restart$',
         fromMe: true,
         dontAddCommandList: true,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         if (!isHeroku) return await message.sendReply("_This is a heroku command, but this bot is not running on heroku!_");
         await fixHerokuAppName(message)
@@ -198,7 +198,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'shutdown$',
         fromMe: true,
         dontAddCommandList: true,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         if (isVPS){
             return await pm2.stop("Raganork");
@@ -221,7 +221,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'dyno$',
         fromMe: true,
         dontAddCommandList: true,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         if (!isHeroku) return await message.sendReply("_This is a heroku command, but this bot is not running on heroku!_");
         await fixHerokuAppName(message)
@@ -255,7 +255,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'setvar ?(.*)',
         fromMe: true,
         desc: Lang.SETVAR_DESC,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         match=match[1]
         var m = message;
@@ -271,7 +271,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'delvar ?(.*)',
         fromMe: true,
         desc: Lang.DELVAR_DESC,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         if (!isHeroku) return await message.sendReply("_This is a heroku command, but this bot is not running on heroku!_");
         await fixHerokuAppName(message)
@@ -298,7 +298,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'getvar ?(.*)',
         fromMe: true,
         desc: Lang.GETVAR_DESC,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         if (match[1] === '') return await message.sendReply(Lang.NOT_FOUND)
         return await message.sendReply(process.env[match[1].trim()]?.toString() || "Not found")
@@ -307,7 +307,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
             pattern: "allvar",
             fromMe: true,
             desc: Lang.ALLVAR_DESC,
-            use: 'owner'
+            use: 'בעלים'
         },
         async (message, match) => {
             if (isVPS) {
@@ -347,7 +347,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
         pattern: 'settings ?(.*)',
         fromMe: true,
         desc: "Bot settings to enable extra options related to WhatsApp bot functionality.",
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
         let configs = settingsMenu
         if (match[1]){
@@ -412,7 +412,7 @@ fs.writeFileSync('./config.env', lines.join('\n'));
     Module({
         pattern: 'setsudo ?(.*)',
         fromMe: true,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, mm) => {
    var m = message;
         var newSudo = ( m.reply_message ? m.reply_message.jid : '' || m.mention[0] || mm[1]).split("@")[0]
@@ -438,7 +438,7 @@ const oldSudo = config.SUDO?.split(",")
     Module({
         pattern: 'getsudo ?(.*)',
         fromMe: true,
-        use: 'owner'
+        use: 'בעלים'
     }, (async (message, match) => {
     return await message.sendReply(config.SUDO);
     }));
@@ -459,7 +459,7 @@ const oldSudo = config.SUDO?.split(",")
         fromMe: true,
         desc: "To toggle commands on/off (enable/disable)",
         usage: '.toggle img',
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         var disabled = process.env.DISABLED_COMMANDS?.split(',') || []
         match = match[1]
@@ -480,7 +480,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antibot ?(.*)',
         fromMe: false,
         desc: "Detects other bot's messages and kicks.",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
         if (message.fromOwner || adminAccesValidated) {
@@ -508,7 +508,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antispam ?(.*)',
         fromMe: false,
         desc: "Detects spam messages and kicks user.",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
         if (message.fromOwner || adminAccesValidated) {
@@ -536,7 +536,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'pdm ?(.*)',
         fromMe: false,
         desc: "Detects promote/demote and sends alert.",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
         if (message.fromOwner || adminAccesValidated) {
@@ -563,7 +563,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antidemote ?(.*)',
         fromMe: true,
         desc: "Detects demote and automatically promotes demoted one and demotes person who demoted.",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         match[1]=match[1]?match[1].toLowerCase():""
         var db = await antidemote.get();
@@ -588,7 +588,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antipromote ?(.*)',
         fromMe: true,
         desc: "Detects promote and automatically demotes promoted one and demotes person who promoted.",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         match[1]=match[1]?match[1].toLowerCase():""
         var db = await antipromote.get();
@@ -613,7 +613,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antilink ?(.*)',
         fromMe: false,
         desc: "Activates antilink, kicks if user sends link",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
         if (message.fromOwner || adminAccesValidated) {
@@ -661,7 +661,7 @@ const oldSudo = config.SUDO?.split(",")
         pattern: 'antiword ?(.*)',
         fromMe: false,
         desc: "Activates antiword, kicks if user sends not allowed words",
-        use: 'group'
+        use: 'קבוצות'
     }, (async (message, match) => {
         let adminAccesValidated = ADMIN_ACCESS ? await isAdmin(message,message.sender) : false;
         if (message.fromOwner || adminAccesValidated) {

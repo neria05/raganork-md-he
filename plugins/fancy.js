@@ -7,10 +7,10 @@ const fancy = require('./misc/fancy');
 require('../main').Module({
      pattern: 'fancy ?(.*)',
      fromMe: require('../config').MODE == 'private',
-     use: 'utility',
-     desc: 'Creates fancy text fonts'
+     use: 'פרודוקטיביות',
+     desc: '(אנגלית) יוצר גופני טקסט מיוחדים'
  }, (async (message, match) => {
-     if (!match[1] && !message.reply_message.message) return await message.sendReply('Reply to a text or type text after command with a numeric code\n_Example: .fancy 10 Hello_\n                      .fancy Hello world\n                      .fancy <reply> 13\n\n'+String.fromCharCode(8206).repeat(4001)+fancy.list('Text here',fancy));
+     if (!match[1] && !message.reply_message.message) return await message.sendReply('השב לטקסט או הקלד טקסט אחרי פקודה עם קוד הפונט \n_דוגמה: .fancy 10 Hello_\n                      .fancy Hello world\n                      .fancy <reply> 13\n\n'+String.fromCharCode(8206).repeat(4001)+fancy.list('Text here',fancy));
     const id = match[1].match(/\d/g)?.join('')
      try {
         if (id === undefined && !message.reply_message){

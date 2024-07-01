@@ -12,7 +12,7 @@ const Lang = Language.getString('greetings');
 
 Module({
     pattern: 'welcome$',
-    use: 'group',
+    use: 'קבוצות',
     fromMe: true,
     desc: Lang.WELCOME_DESC
 }, (async (message, match) => {
@@ -26,7 +26,7 @@ Module({
 Module({
     pattern: 'welcome (.*)',
     fromMe: true,
-    use: 'group',
+    use: 'קבוצות',
     dontAddCommandList: true
 }, (async (message, match) => {
     if (match[1] === 'delete') {
@@ -40,7 +40,7 @@ Module({
     pattern: 'goodbye$',
     fromMe: true,
     desc: Lang.GOODBYE_DESC,
-    use: 'group'
+    use: 'קבוצות'
 }, (async (message, match) => {
     var hg = await sql.getMessage(message.jid, 'goodbye');
     if (hg === false) {
@@ -53,7 +53,7 @@ Module({
     pattern: 'goodbye (.*)',
     fromMe: true,
     dontAddCommandList: true,
-    use: 'group'
+    use: 'קבוצות'
 }, (async (message, match) => {
     if (match[1] === 'delete') {
         await message.sendReply(Lang.GOODBYE_DELETED);
