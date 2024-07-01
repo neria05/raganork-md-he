@@ -136,7 +136,7 @@ Module({
          if (buff) await message.send(buff, 'image');
         }
 }));
-/*
+
 Module({
     pattern: 'gpt ?(.*)',
     fromMe: w,
@@ -148,7 +148,8 @@ Module({
     if (!process.env.OPENAI_KEY) return await message.sendReply("_No OpenAI API key found. Get an API key:_\n\n_1. Create an account: https://platform.openai.com/signup/_\n\n_2. Then, open this url: https://platform.openai.com/account/api-keys and copy api key_\n\n_3. Add the key into OPENAI_KEY var using .setvar_\n\n_(Eg: .setvar OPENAI_KEY:yourkeyhere )_" )
     const {text} = await ChatGPT(match[1],process.env.OPENAI_KEY)
     return await message.sendReply(text || "_No response returned, please try again_")
-})); */
+})); 
+/*
 Module({
     pattern: 'gpt ?(.*)',
     fromMe: w,
@@ -161,6 +162,7 @@ Module({
     const text = result.result?result.result:result;
     return await message.sendReply(text)
 }));
+*/
 Module({
     pattern: 'davinci ?(.*)',
     fromMe: w,
